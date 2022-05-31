@@ -1,0 +1,30 @@
+<div class="row col-xs-12" *ngIf="users$ | async as users">
+  <h1>Users</h1>
+  <div class="card m-2" *ngFor="let user of users">
+    <div class="card-title m-2">
+      <h3>{{ user.name }}</h3>
+    </div>
+    <div class="card-text m-2">
+      <span>email</span>
+      <p>{{ user.email }}</p>
+      <span>personal website</span>
+      <p>{{ user.website }}</p>
+      <span>company</span>
+      <p>{{ user.company.name }}</p>
+      <span>address</span>
+      {{ user.address.street }}, {{ user.address.city }}
+    </div>
+
+    <div class="">
+      <button class="btn btn-secondary m-2" [routerLink]="[user.id, 'albums']">
+        albums
+      </button>
+      <button class="btn btn-secondary m-2" [routerLink]="[user.id, 'todos']">
+        todos
+      </button>
+      <button class="btn btn-secondary m-2" [routerLink]="[user.id, 'posts']">
+        posts
+      </button>
+    </div>
+  </div>
+</div>
