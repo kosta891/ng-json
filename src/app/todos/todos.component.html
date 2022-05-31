@@ -1,0 +1,51 @@
+<div class="row col-xs-12">
+  <h1>Todos</h1>
+  <div class="col-lg-8">
+    <input class="form-control" type="text" [(ngModel)]="newTodo" />
+    <button
+      class="btn btn-primary mb-4 mt-2"
+      (click)="onNewTodo()"
+      [disabled]="!newTodo"
+    >
+      New Todo
+    </button>
+  </div>
+
+  <div class="form-control col-lg-8" *ngFor="let todo of todos">
+    <input
+      [(ngModel)]="todo.completed"
+      type="checkbox"
+      (change)="onChecked(todo)"
+    />
+
+    <span
+      ngClass="{{ todo.completed && 'text-decoration-line-through' }}"
+      *ngIf="!todo.editMode"
+    >
+      {{ todo.id }}.
+      {{ todo.title }}
+    </span>
+
+    <input
+      class="form-control"
+      *ngIf="todo.editMode"
+      [(ngModel)]="todo.title"
+    />
+
+    <div *ngIf="!todo.editMode">
+      <button class="btn btn-secondary m-3" (click)="onEnableEdit(todo)">
+        edit
+      </button>
+      <button class="btn btn-danger m-3" (click)="onDeleteTodo(todo.id)">
+        delete
+      </button>
+    </div>
+    <div *ngIf="todo.editMode">
+      <button class="btn btn-secondary m-3" (click)="onClose(todo)">
+        close
+      </button>
+      <button class="btn btn-primary m-3" (click)="onSave(todo)">save</button>
+    </div>
+  </div>
+</div>
+<button class="btn btn-secondary mt-4 mb-3" routerLink="">Back Home</button>

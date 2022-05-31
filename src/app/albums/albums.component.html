@@ -1,0 +1,16 @@
+<div class="row col-xs-12" *ngIf="albums$ | async as albums">
+  <h1>Albums</h1>
+  <div class="card d-flex justify-content-between" *ngFor="let album of albums">
+    <p class="card-title m-3">
+      {{ album.title }}
+    </p>
+
+    <button
+      class="btn btn-primary m-3 gy-5"
+      [routerLink]="['/albums', album.id, 'photos']"
+    >
+      show pictures
+    </button>
+  </div>
+</div>
+<button class="btn btn-secondary m-3" routerLink="">Back Home</button>

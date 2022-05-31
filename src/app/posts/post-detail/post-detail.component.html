@@ -1,0 +1,20 @@
+<div class="row col-xs-12">
+  <div class="list-group-item">
+    <h1>Post {{ post.id }}</h1>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.body }}</p>
+
+    <div>
+      <h3>Comments</h3>
+      <div
+        class="list-group-item"
+        *ngFor="let comment of comments; let i = index"
+      >
+        <p>{{ i + 1 }}.</p>
+        <p>id: {{ comment.id }}</p>
+        <h6>{{ comment.name }}</h6>
+        <p>{{ comment.body }}</p>
+      </div>
+    </div>
+  </div>
+</div>

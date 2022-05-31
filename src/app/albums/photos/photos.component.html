@@ -1,0 +1,19 @@
+<div class="row col-xs-12" *ngIf="photos$ | async as photos">
+  <h1>Photos</h1>
+  <div class="mt-5 photo" *ngFor="let photo of photos">
+    <div>
+      <img [src]="photo.thumbnailUrl" [alt]="photo.title" />
+    </div>
+    <div class="mt-2">
+      <a
+        class="link-info"
+        [href]="photo.url"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Link to picture</a
+      >
+    </div>
+  </div>
+</div>
+<button class="mb-5 btn btn-secondary" routerLink="">Back Home</button>
